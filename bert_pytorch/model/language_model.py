@@ -28,7 +28,7 @@ class BERTLM(nn.Module):
         """
         x = self.bert(x, segment_label)
         # x: [batch_size, seq_len, hidden]
-        return self.next_sentence(x), self.mask_lm(x)
+        return self.next_sentence(x), self.mask_lm(x) # 两个预训练任务
 
 
 class NextSentencePrediction(nn.Module):

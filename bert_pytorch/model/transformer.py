@@ -26,6 +26,6 @@ class TransformerBlock(nn.Module):
         self.dropout = nn.Dropout(p=dropout)
 
     def forward(self, x, mask):
-        x = self.input_sublayer(x, lambda _x: self.attention.forward(_x, _x, _x, mask=mask))
-        x = self.output_sublayer(x, self.feed_forward)
+        x = self.input_sublayer(x, lambda _x: self.attention.forward(_x, _x, _x, mask=mask)) # 输入经过多头注意力后与残差相加
+        x = self.output_sublayer(x, self.feed_forward) # 通过前馈网络后残差相加
         return self.dropout(x)

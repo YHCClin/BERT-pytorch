@@ -115,15 +115,15 @@ class Vocab(TorchVocab):
 class WordVocab(Vocab):
     def __init__(self, texts, max_size=None, min_freq=1):
         print("Building Vocab")
-        counter = Counter()
+        counter = Counter() # 初始化一个计数器
         for line in tqdm.tqdm(texts):
             if isinstance(line, list):
                 words = line
             else:
-                words = line.replace("\n", "").replace("\t", "").split()
+                words = line.replace("\n", "").replace("\t", "").split() # 用回车 tap 或 空格分词
 
             for word in words:
-                counter[word] += 1
+                counter[word] += 1 # 统计每个单词的出现频率
         super().__init__(counter, max_size=max_size, min_freq=min_freq)
 
     def to_seq(self, sentence, seq_len=None, with_eos=False, with_sos=False, with_len=False):

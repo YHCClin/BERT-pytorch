@@ -71,7 +71,7 @@ class BERTTrainer:
     def test(self, epoch):
         self.iteration(epoch, self.test_data, train=False)
 
-    def iteration(self, epoch, data_loader, train=True):
+    def iteration(self, epoch, data_loader, train=True): # 训练开始
         """
         loop over the data_loader for training or testing
         if on train status, backward operation is activated
